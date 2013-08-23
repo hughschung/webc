@@ -2,8 +2,6 @@
 /etc
 /etc/ssl
 /etc/ssl/certs
-/etc/ca-certificates
-/etc/ca-certificates/update.d
 /usr
 /usr/sbin
 /usr/sbin/update-ca-certificates

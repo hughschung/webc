@@ -111,6 +111,28 @@ Description: Freefont Serif, Sans and Mono Truetype fonts
  Times and Courier fonts.
 Homepage: http://savannah.gnu.org/projects/freefont/
 
+Package: java-common
+Status: install ok installed
+Priority: optional
+Section: java
+Installed-Size: 242
+Maintainer: Debian Java Mailing List <debian-java@lists.debian.org>
+Architecture: all
+Multi-Arch: foreign
+Version: 0.47
+Suggests: default-jre, equivs
+Description: Base of all Java packages
+ This package must be installed in the system if a Java environment
+ is desired. It covers useful information for Java users in
+ Debian GNU/Linux, including:
+  * The Java policy document which describes the layout of Java support in
+    Debian and how Java packages should behave.
+  * The Debian-Java-FAQ which provides information on the status of
+    Java support in Debian, available compilers, virtual machines, Java
+    programs and libraries as well as on legal issues.
+  * Information on how to create dummy packages to fulfill java2
+    requirements.
+
 Package: libsystemd-id128-0
 Status: install ok installed
 Priority: optional
@@ -548,6 +570,52 @@ Description: X11 miscellaneous micro-utility library
  .
  This module can be found at
  git://anongit.freedesktop.org/git/xorg/lib/libXmu
+
+Package: openjdk-7-jre-headless
+Status: install ok installed
+Priority: optional
+Section: java
+Installed-Size: 53821
+Maintainer: OpenJDK Team <openjdk@lists.launchpad.net>
+Architecture: i386
+Multi-Arch: same
+Source: openjdk-7
+Version: 7u25-2.3.10-1~deb7u1
+Provides: java-runtime-headless, java2-runtime-headless, java5-runtime-headless, java6-runtime-headless, java7-runtime-headless
+Depends: openjdk-7-jre-lib (= 7u25-2.3.10-1~deb7u1), ca-certificates-java, tzdata-java, java-common (>= 0.28), libcups2 (>= 1.4.0), liblcms2-2, libjpeg8 (>= 8c), libnss3 (>= 2:3.13.4), libpcsclite1, libc6 (>= 2.11), libfontconfig1 (>= 2.9.0), libfreetype6 (>= 2.2.1), libgcc1 (>= 1:4.1.1), libglib2.0-0 (>= 2.26.0), libstdc++6 (>= 4.1.1), zlib1g (>= 1:1.1.4)
+Pre-Depends: multiarch-support
+Recommends: icedtea-7-jre-jamvm (= 7u25-2.3.10-1~deb7u1)
+Suggests: libnss-mdns, sun-java6-fonts, ttf-dejavu-extra, fonts-ipafont-gothic, fonts-ipafont-mincho, ttf-wqy-microhei | ttf-wqy-zenhei, ttf-indic-fonts
+Breaks: icedtea-netx (<< 1.4-2)
+Conflicts: icedtea-netx (<< 1.1.1-2~)
+Conffiles:
+ /etc/java-7-openjdk/jvm-i386.cfg 8909fe31103586b50665a512f9545e32
+ /etc/java-7-openjdk/security/java.policy 3e9a3e3db0760e3c777d583119cba030
+ /etc/java-7-openjdk/security/java.security 43b642a4a3667b3401d0f1421a57e6dc
+ /etc/java-7-openjdk/security/nss.cfg 29cf69843bcfaa33f10222d39b198d73
+ /etc/java-7-openjdk/management/jmxremote.password 7b46c291e7073c31d3ce0adae2f7554f
+ /etc/java-7-openjdk/management/snmp.acl 71a7de7dbe2977f6ece75c904d430b62
+ /etc/java-7-openjdk/management/jmxremote.access f63bea1f4a31317f6f061d83215594df
+ /etc/java-7-openjdk/management/management.properties 81a43119ab15099c1d70e2d683fc8c0a
+ /etc/java-7-openjdk/images/cursors/cursors.properties 5d9b1cc5dea82c2324d112fe1dad9c11
+ /etc/java-7-openjdk/accessibility.properties cb5ef274bab0096317e5053916bd8bb8
+ /etc/java-7-openjdk/calendars.properties 53af14d97565d1c7e1525e2e9a930f36
+ /etc/java-7-openjdk/content-types.properties 6bffae942882e96727b2eee6adce708b
+ /etc/java-7-openjdk/logging.properties 809c50033f825eff7fc70419aaf30317
+ /etc/java-7-openjdk/sound.properties 9ff2fcee52a281d643d591f9696a800b
+ /etc/java-7-openjdk/flavormap.properties 571560455e2d47bcb59077d415dd388e
+ /etc/java-7-openjdk/net.properties 19a5c7f5186854362281a152e756ce2f
+ /etc/java-7-openjdk/psfontj2d.properties 17b15d370018acc01550175882c7da91
+ /etc/java-7-openjdk/psfont.properties.ja d4c735bf5756759a1c3bc8de408629fc
+ /etc/java-7-openjdk/swing.properties 235f7a79068085d8ef02e2b5134a294a
+ /etc/java-7-openjdk/tz.properties 711fb698d093b25fd521371696bbe015
+ /etc/java-7-openjdk/fontconfig.properties 6711d32221cda3394972e9dc5ae1916d
+Description: OpenJDK Java runtime, using Hotspot JIT (headless)
+ Minimal Java runtime - needed for executing non GUI Java programs.
+ Using Hotspot JIT.
+ The packages are built using the IcedTea build support and patches
+ from the IcedTea project.
+Homepage: http://openjdk.java.net/
 
 Package: initramfs-tools
 Status: install ok installed
@@ -2821,6 +2889,50 @@ Description: simple interprocess messaging system (GLib-based shared library)
  See the dbus description for more information about D-Bus in general.
 Homepage: http://www.freedesktop.org/wiki/Software/DBusBindings
 
+Package: tzdata-java
+Status: install ok installed
+Priority: optional
+Section: java
+Installed-Size: 373
+Maintainer: GNU Libc Maintainers <debian-glibc@lists.debian.org>
+Architecture: all
+Multi-Arch: foreign
+Source: tzdata
+Version: 2013c-0wheezy1
+Depends: tzdata (= 2013c-0wheezy1)
+Description: time zone and daylight-saving time data for use by java runtimes
+ This package contains data required for the implementation of
+ standard local time for many representative locations around the
+ globe. It is updated periodically to reflect changes made by
+ political bodies to time zone boundaries, UTC offsets, and
+ daylight-saving rules.
+ .
+ This package contains the data for use by Java runtimes.
+Homepage: http://www.iana.org/time-zones
+
+Package: icedtea-netx
+Status: install ok installed
+Priority: extra
+Section: java
+Installed-Size: 141
+Maintainer: OpenJDK Team <openjdk@lists.launchpad.net>
+Architecture: i386
+Multi-Arch: same
+Source: icedtea-web
+Version: 1.4-3~deb7u1
+Replaces: openjdk-6-jre (<< 6b18-1.8.7-3), openjdk-6-jre-headless (<< 6b18-1.8.7-3)
+Depends: openjdk-6-jre (>= 6b23~pre10~) | openjdk-7-jre, icedtea-netx-common (>= 1.4-3~deb7u1)
+Conflicts: openjdk-6-jre (<< 6b18-1.8.7-3), openjdk-6-jre-headless (<< 6b18-1.8.7-3)
+Description: NetX - implementation of the Java Network Launching Protocol (JNLP)
+ NetX provides a drop-in replacement for javaws (Java Web Start). Since
+ upstream NetX is dormant, IcedTea is hosting and modifying the sources
+ in the IcedTea-Web directory.
+ .
+ IcedTea's NetX currently supports verification of signed jars, trusted
+ certificate storing, system certificate store checking, and provides
+ the services specified by the jnlp API.
+Homepage: http://icedtea.classpath.org/wiki/IcedTea-Web
+
 Package: alsa-oss
 Status: install ok installed
 Priority: optional
@@ -2854,6 +2966,24 @@ Description: ALSA wrapper for OSS applications
  .
  OSS is the free version of the Open Sound System.
 Homepage: http://www.alsa-project.org/
+
+Package: libgif4
+Status: install ok installed
+Priority: optional
+Section: libs
+Installed-Size: 89
+Maintainer: Thibaut Gridel <tgridel@free.fr>
+Architecture: i386
+Source: giflib
+Version: 4.1.6-10
+Provides: libungif4g
+Depends: libc6 (>= 2.4)
+Description: library for GIF images (library)
+ GIFLIB is a package of portable tools and library routines for working with GIF
+ images.
+ .
+ This package contains the library.
+Homepage: http://giflib.sourceforge.net/
 
 Package: xserver-xorg-core
 Status: install ok installed
@@ -4328,24 +4458,6 @@ Description: report the search path for a class's ISA tree
  no duplicates.
 Homepage: http://search.cpan.org/dist/Class-ISA/
 
-Package: libnl1
-Status: install ok installed
-Priority: optional
-Section: libs
-Installed-Size: 412
-Maintainer: Michael Biebl <biebl@debian.org>
-Architecture: i386
-Multi-Arch: same
-Source: libnl
-Version: 1.1-7
-Depends: libc6 (>= 2.3)
-Pre-Depends: multiarch-support
-Description: library for dealing with netlink sockets
- This is a library for applications dealing with netlink sockets.
- The library provides an interface for raw netlink messaging and various
- netlink family specific interfaces.
-Homepage: http://www.infradead.org/~tgr/libnl/
-
 Package: liblcms2-2
 Status: install ok installed
 Priority: optional
@@ -4367,6 +4479,24 @@ Description: Little CMS 2 color management library
  all V2 and V4 profiles, including abstract, devicelink and named color
  profiles.
 Homepage: http://www.littlecms.com/
+
+Package: libnl1
+Status: install ok installed
+Priority: optional
+Section: libs
+Installed-Size: 412
+Maintainer: Michael Biebl <biebl@debian.org>
+Architecture: i386
+Multi-Arch: same
+Source: libnl
+Version: 1.1-7
+Depends: libc6 (>= 2.3)
+Pre-Depends: multiarch-support
+Description: library for dealing with netlink sockets
+ This is a library for applications dealing with netlink sockets.
+ The library provides an interface for raw netlink messaging and various
+ netlink family specific interfaces.
+Homepage: http://www.infradead.org/~tgr/libnl/
 
 Package: libnl2
 Status: install ok installed
@@ -4462,6 +4592,26 @@ Description: Qt 4 core module
  .
  The QtCore module contains core non-GUI functionality.
 Homepage: http://qt-project.org/
+
+Package: libatk-wrapper-java-jni
+Status: install ok installed
+Priority: optional
+Section: java
+Installed-Size: 121
+Maintainer: Debian Accessibility Team <debian-accessibility@lists.debian.org>
+Architecture: i386
+Multi-Arch: same
+Source: java-atk-wrapper
+Version: 0.30.4-3
+Depends: libatk1.0-0 (>= 1.18.0), libc6 (>= 2.3.6-6~), libcairo2 (>= 1.2.4), libgdk-pixbuf2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.31.8), libgtk2.0-0 (>= 2.12.0), libpango1.0-0 (>= 1.14.0), libatk-wrapper-java (>= 0.30.4-3)
+Pre-Depends: multiarch-support
+Description: ATK implementation for Java using JNI (JNI bindings)
+ Java ATK Wrapper is an implementation of ATK by using JNI. It
+ converts Java Swing events into ATK events, and send these events to
+ ATK-Bridge.
+ .
+ This package contains the JNI bindings.
+Homepage: http://ftp.gnome.org/pub/GNOME/sources/java-atk-wrapper/
 
 Package: libcupsfilters1
 Status: install ok installed
@@ -5251,23 +5401,25 @@ Description: Common UNIX Printing System(tm) - Driver library
 Homepage: http://www.cups.org
 
 Package: libsqlite3-0
-Status: deinstall ok config-files
+Status: install ok installed
 Priority: standard
 Section: libs
-Installed-Size: 772
-Maintainer: Progress Developers <progress-devel@lists.progress-linux.org>
-Bugs: mailto:progress-bugs@lists.progress-linux.org
+Installed-Size: 840
+Maintainer: Progress Linux Maintainers <maintainers@lists.progress-linux.org>
+Bugs: mailto:bugs@lists.progress-linux.org
 Architecture: i386
+Multi-Arch: same
 Source: sqlite3
-Version: 3.7.12.1-1~artax1
-Config-Version: 3.7.12.1-1~artax1
+Version: 3.7.16.2-1~baureo1
 Depends: libc6 (>= 2.3.6-6~)
+Pre-Depends: dpkg-lzip, multiarch-support
 Description: SQLite 3 shared library
  SQLite is a C library that implements an SQL database engine.
  Programs that link with the SQLite library can have SQL database
  access without running a separate RDBMS process.
 Homepage: http://www.sqlite.org/
-Original-Maintainer: Laszlo Boszormenyi (GCS) <gcs@debian.hu>
+Original-Maintainer: Laszlo Boszormenyi (GCS) <gcs@debian.org>
+Uploaders: Daniel Baumann <daniel.baumann@progress-linux.org>
 
 Package: libtext-iconv-perl
 Status: install ok installed
@@ -6533,6 +6685,26 @@ Description: Graphics file viewer under X11
  .
  Includes xsetbg, xview and uufilter.
 
+Package: default-jre-headless
+Status: install ok installed
+Priority: optional
+Section: java
+Installed-Size: 48
+Maintainer: Debian Java Mailing List <debian-java@lists.debian.org>
+Architecture: i386
+Source: java-common (0.47)
+Version: 1:1.6-47
+Replaces: openjdk-6-jre-headless (<< 6b23~pre8-2~)
+Provides: java-runtime-headless, java2-runtime-headless, java5-runtime-headless, java6-runtime-headless
+Depends: openjdk-6-jre-headless (>= 6b23~pre8-2~), java-common
+Suggests: default-jre
+Description: Standard Java or Java compatible Runtime (headless)
+ This package points to the Java runtime, or Java compatible
+ runtime recommended for this architecture, which is
+ openjdk-6-jre-headless for i386.
+ The package is used as dependency for packages not needing a
+ graphical display during runtime.
+
 Package: libtheora0
 Status: install ok installed
 Priority: optional
@@ -6708,6 +6880,23 @@ Description: common files for the GTK+ graphical user interface library
  .
  This package contains the common files which the libraries need.
 Homepage: http://www.gtk.org/
+
+Package: libatk-wrapper-java
+Status: install ok installed
+Priority: optional
+Section: java
+Installed-Size: 62
+Maintainer: Debian Accessibility Team <debian-accessibility@lists.debian.org>
+Architecture: all
+Multi-Arch: foreign
+Source: java-atk-wrapper
+Version: 0.30.4-3
+Recommends: libatk-wrapper-java-jni
+Description: ATK implementation for Java using JNI
+ Java ATK Wrapper is an implementation of ATK by using JNI. It
+ converts Java Swing events into ATK events, and send these events to
+ ATK-Bridge.
+Homepage: http://ftp.gnome.org/pub/GNOME/sources/java-atk-wrapper/
 
 Package: xserver-xorg-video-tdfx
 Status: install ok installed
@@ -7862,6 +8051,23 @@ Description: wireless regulatory database
  regulatory database and CRDA.
 Homepage: http://wireless.kernel.org/en/developers/Regulatory/#Theregulatorydatabase
 
+Package: ca-certificates-java
+Status: install ok installed
+Priority: optional
+Section: java
+Installed-Size: 19
+Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Architecture: all
+Multi-Arch: foreign
+Version: 20121112+nmu2
+Depends: ca-certificates (>= 20121114), openjdk-6-jre-headless (>= 6b16-1.6.1-2) | java6-runtime-headless, libnss3 (>= 3.12.10-2~)
+Conffiles:
+ /etc/ca-certificates/update.d/jks-keystore b3bbe485f358ff3e9495b039cf25aa71
+ /etc/default/cacerts 0ded97abeff69c2362939e2e881e214a
+Description: Common CA certificates (JKS keystore)
+ This package uses the hooks of the ca-certificates package to update the
+ cacerts JKS keystore used for many java runtimes.
+
 Package: libxfixes3
 Status: install ok installed
 Priority: optional
@@ -8263,27 +8469,20 @@ Description: Linux console font and keytable utilities
  in the “console-data” package.
 
 Package: libnss3-1d
-Status: deinstall ok config-files
-Priority: optional
-Section: libs
-Installed-Size: 2840
-Maintainer: Progress Developers <progress-devel@lists.progress-linux.org>
-Bugs: mailto:progress-issues@lists.progress-linux.org
+Status: install ok installed
+Priority: extra
+Section: oldlibs
+Installed-Size: 86
+Maintainer: Maintainers of Mozilla-related packages <pkg-mozilla-maintainers@lists.alioth.debian.org>
 Architecture: i386
+Multi-Arch: same
 Source: nss
-Version: 3.13.4-1~artax1
-Config-Version: 3.13.4-1~artax1
-Depends: libc6 (>= 2.3.6-6~), libnspr4-0d (>= 4.8.6), libsqlite3-0 (>= 3.5.9), zlib1g (>= 1:1.1.4)
-Description: Network Security Service libraries
- This is a set of libraries designed to support cross-platform development
- of security-enabled client and server applications. It can support SSLv2
- and  v4, TLS, PKCS #5, #7, #11, #12, S/MIME, X.509 v3 certificates and
- other security standards.
+Version: 2:3.14.3-1
+Depends: libnss3 (= 2:3.14.3-1)
+Description: Network Security Service libraries - transitional package
+ This is a transitional package to ensure smooth transition of all packages
+ to libnss3.
 Homepage: http://www.mozilla.org/projects/security/pki/nss/
-Original-Maintainer: Maintainers of Mozilla-related packages <pkg-mozilla-maintainers@lists.alioth.debian.org>
-Original-Uploaders: Mike Hommey <glandium@debian.org>
-Original-Vcs-Browser: http://git.debian.org/?p=pkg-mozilla/nss.git
-Original-Vcs-Git: git://git.debian.org/git/pkg-mozilla/nss.git
 
 Package: libcurl3
 Status: install ok installed
@@ -8761,6 +8960,24 @@ Description: X Keyboard Extension (XKB) configuration data
  xkeyboard-config project has been launched at FreeDesktop in order
  to provide a central repository that could be used by all vendors.
 Homepage: http://www.freedesktop.org/Software/XKeyboardConfig
+
+Package: openjdk-7-jre-lib
+Status: install ok installed
+Priority: optional
+Section: java
+Installed-Size: 6144
+Maintainer: OpenJDK Team <openjdk@lists.launchpad.net>
+Architecture: all
+Multi-Arch: foreign
+Source: openjdk-7
+Version: 7u25-2.3.10-1~deb7u1
+Depends: openjdk-7-jre-headless (>= 7~b130~pre0)
+Description: OpenJDK Java runtime (architecture independent libraries)
+ OpenJDK Java runtime, using Hotspot JIT.
+ The packages are built using the IcedTea build support and patches
+ from the IcedTea project.
+Built-Using: rhino (= 1.7R3-5)
+Homepage: http://openjdk.java.net/
 
 Package: libacl1
 Status: install ok installed
@@ -9533,6 +9750,52 @@ Description: ATK accessibility toolkit
  This is the runtime part of ATK, needed to run applications built with it.
 Homepage: http://www.gtk.org/
 
+Package: openjdk-6-jre-headless
+Status: install ok installed
+Priority: optional
+Section: java
+Installed-Size: 80178
+Maintainer: OpenJDK Team <openjdk@lists.launchpad.net>
+Architecture: i386
+Multi-Arch: same
+Source: openjdk-6
+Version: 6b27-1.12.6-1~deb7u1
+Replaces: openjdk-6-jdk (<< 6b20-1.9.1-0ubuntu2), openjdk-6-jre (<< 6b23~pre1), openjdk-6-jre-lib (<< 6b23~pre10)
+Provides: java-runtime-headless, java2-runtime-headless, java5-runtime-headless, java6-runtime-headless
+Depends: openjdk-6-jre-lib (= 6b27-1.12.6-1~deb7u1), ca-certificates-java, tzdata-java, java-common (>= 0.28), libcups2, libjpeg8, libnss3-1d (>= 3.12.3), libpcsclite1, libc6 (>= 2.3.6-6~), libfreetype6 (>= 2.2.1), libgcc1 (>= 1:4.1.1), libstdc++6 (>= 4.1.1), zlib1g (>= 1:1.1.4)
+Pre-Depends: multiarch-support
+Recommends: icedtea-6-jre-cacao (= 6b27-1.12.6-1~deb7u1), icedtea-6-jre-jamvm (= 6b27-1.12.6-1~deb7u1)
+Suggests: libnss-mdns, sun-java6-fonts, ttf-dejavu-extra, fonts-ipafont-gothic, fonts-ipafont-mincho, ttf-wqy-microhei | ttf-wqy-zenhei, ttf-indic-fonts
+Conflicts: default-jre-headless (<< 1.6-43~), icedtea-netx (<< 1.1.1-2~), openjdk-6-dbg (<< 6b17~pre3-1), openjdk-6-demo (<< 6b17~pre3-1), openjdk-6-doc (<< 6b17~pre3-1), openjdk-6-jdk (<< 6b17~pre3-1), openjdk-6-jre (<< 6b17~pre3-1), openjdk-6-jre-lib (<< 6b17~pre3-1), openjdk-6-jre-zero (<< 6b17~pre3-1), openjdk-6-source (<< 6b17~pre3-1)
+Conffiles:
+ /etc/java-6-openjdk/sound.properties 9ff2fcee52a281d643d591f9696a800b
+ /etc/java-6-openjdk/content-types.properties ab9822ef63ffab6c4ecdc78d0802af28
+ /etc/java-6-openjdk/psfontj2d.properties abcd0373622e1c9cb6974bfb34cc4e90
+ /etc/java-6-openjdk/jvm-i386.cfg 08176ce0d7d7caa49cce4ce40ffab588
+ /etc/java-6-openjdk/logging.properties 2ebf6417293beb2566a950abc02b07e8
+ /etc/java-6-openjdk/fontconfig.properties 7d0695a9c24e9dca8b13a4191a917b55
+ /etc/java-6-openjdk/flavormap.properties bd3358f8302e986722d445af2b1b0a25
+ /etc/java-6-openjdk/management/jmxremote.password 7b46c291e7073c31d3ce0adae2f7554f
+ /etc/java-6-openjdk/management/jmxremote.access f63bea1f4a31317f6f061d83215594df
+ /etc/java-6-openjdk/management/snmp.acl 71a7de7dbe2977f6ece75c904d430b62
+ /etc/java-6-openjdk/management/management.properties 81a43119ab15099c1d70e2d683fc8c0a
+ /etc/java-6-openjdk/tz.properties 711fb698d093b25fd521371696bbe015
+ /etc/java-6-openjdk/images/cursors/cursors.properties a70639354df03f1fbb3053a021fb880b
+ /etc/java-6-openjdk/security/java.policy 7137691184a872e64cb2531b790deee9
+ /etc/java-6-openjdk/security/java.security 46b21fc43c5c0735b7df3b156952317a
+ /etc/java-6-openjdk/security/nss.cfg 29cf69843bcfaa33f10222d39b198d73
+ /etc/java-6-openjdk/accessibility.properties cb5ef274bab0096317e5053916bd8bb8
+ /etc/java-6-openjdk/net.properties 19854300cbe8fc2d955111b0b31d0652
+ /etc/java-6-openjdk/calendars.properties 53af14d97565d1c7e1525e2e9a930f36
+ /etc/java-6-openjdk/swing.properties 235f7a79068085d8ef02e2b5134a294a
+ /etc/java-6-openjdk/psfont.properties.ja 8048b217d4423a9226ec8e5c7ef811bb
+Description: OpenJDK Java runtime, using Hotspot JIT (headless)
+ Minimal Java runtime - needed for executing non GUI Java programs.
+ Using Hotspot JIT.
+ The packages are built using the IcedTea build support and patches
+ from the IcedTea project.
+Homepage: http://openjdk.java.net/
+
 Package: liblzma5
 Status: install ok installed
 Priority: required
@@ -10080,6 +10343,29 @@ Description: Perl 5 Compatible Regular Expression Library - runtime files
  .
  This package contains the runtime libraries.
 
+Package: openjdk-6-jre
+Status: install ok installed
+Priority: optional
+Section: java
+Installed-Size: 695
+Maintainer: OpenJDK Team <openjdk@lists.launchpad.net>
+Architecture: i386
+Multi-Arch: same
+Source: openjdk-6
+Version: 6b27-1.12.6-1~deb7u1
+Replaces: openjdk-6-jdk (<< 6b20-1.10~pre2-0ubuntu1), openjdk-6-jre-headless (<< 6b16~pre3)
+Provides: java-runtime, java2-runtime, java5-runtime, java6-runtime
+Depends: openjdk-6-jre-headless (= 6b27-1.12.6-1~deb7u1), libasound2 (>= 1.0.16), libc6 (>= 2.3.6-6~), libgif4 (>= 4.1.4), libjpeg8 (>= 8c), libpng12-0 (>= 1.2.13-4), libpulse0 (>= 0.99.1), libx11-6, libxext6, libxi6, libxrender1, libxtst6, zlib1g (>= 1:1.1.4), libatk-wrapper-java-jni (>= 0.30.4-0ubuntu2)
+Recommends: ttf-dejavu-extra, icedtea-netx
+Suggests: icedtea-plugin
+Conflicts: icedtea-gcjwebplugin (<< 1.0-1ubuntu4), openjdk-6-dbg (<< 6b17~pre3-1), openjdk-6-demo (<< 6b17~pre3-1), openjdk-6-doc (<< 6b17~pre3-1), openjdk-6-jdk (<< 6b17~pre3-1), openjdk-6-jre-headless (<< 6b17~pre3-1), openjdk-6-jre-lib (<< 6b17~pre3-1), openjdk-6-jre-zero (<< 6b17~pre3-1), openjdk-6-source (<< 6b17~pre3-1)
+Description: OpenJDK Java runtime, using Hotspot JIT
+ Full Java runtime environment - needed for executing Java GUI and Webstart
+ programs. Using Hotspot JIT.
+ The packages are built using the IcedTea build support and patches
+ from the IcedTea project.
+Homepage: http://openjdk.java.net/
+
 Package: aptitude
 Status: deinstall ok config-files
 Priority: important
@@ -10208,6 +10494,26 @@ Description: High-level library for managing Debian package information
   * The Xapian index built by apt-xapian-index
  .
  This is the shared library.
+
+Package: openjdk-6-jre-lib
+Status: install ok installed
+Priority: optional
+Section: java
+Installed-Size: 7780
+Maintainer: OpenJDK Team <openjdk@lists.launchpad.net>
+Architecture: all
+Multi-Arch: foreign
+Source: openjdk-6
+Version: 6b27-1.12.6-1~deb7u1
+Depends: openjdk-6-jre-headless (>= 6b17)
+Breaks: openjdk-6-jre-headless (<< 6b23~pre9-1~)
+Conflicts: openjdk-6-jre (<< 6b17~pre3-1), openjdk-6-jre-headless (<< 6b17~pre3-1)
+Description: OpenJDK Java runtime (architecture independent libraries)
+ OpenJDK Java runtime, using Hotspot JIT.
+ The packages are built using the IcedTea build support and patches
+ from the IcedTea project.
+Built-Using: rhino (= 1.7R3-5)
+Homepage: http://openjdk.java.net/
 
 Package: linux-base
 Status: install ok installed
@@ -10734,6 +11040,28 @@ Description: X.Org X server -- Trident display driver
  <URL:http://www.X.org>
  .
  This package is built from the X.org xf86-video-trident driver module.
+
+Package: openjdk-7-jre
+Status: install ok installed
+Priority: optional
+Section: java
+Installed-Size: 540
+Maintainer: OpenJDK Team <openjdk@lists.launchpad.net>
+Architecture: i386
+Multi-Arch: same
+Source: openjdk-7
+Version: 7u25-2.3.10-1~deb7u1
+Provides: java-runtime, java2-runtime, java5-runtime, java6-runtime, java7-runtime
+Depends: openjdk-7-jre-headless (= 7u25-2.3.10-1~deb7u1), libasound2 (>= 1.0.16), libatk1.0-0 (>= 1.12.4), libc6 (>= 2.11), libcairo2 (>= 1.2.4), libcups2 (>= 1.4.0), libfontconfig1 (>= 2.9.0), libfreetype6 (>= 2.2.1), libgdk-pixbuf2.0-0 (>= 2.22.0), libgif4 (>= 4.1.4), libglib2.0-0 (>= 2.16.0), libgtk2.0-0 (>= 2.8.0), libjpeg8 (>= 8c), libpango1.0-0 (>= 1.14.0), libpng12-0 (>= 1.2.13-4), libpulse0 (>= 0.99.1), libx11-6, libxext6, libxi6, libxrender1, libxtst6, zlib1g (>= 1:1.1.4), libxrandr2, libxinerama1, libgl1-mesa-glx | libgl1, libatk-wrapper-java-jni (>= 0.30.4-0ubuntu2)
+Recommends: libgnome2-0, libgnomevfs2-0, libgconf2-4, ttf-dejavu-extra
+Suggests: icedtea-7-plugin
+Conflicts: icedtea-gcjwebplugin (<< 1.0-1ubuntu4)
+Description: OpenJDK Java runtime, using Hotspot JIT
+ Full Java runtime environment - needed for executing Java GUI and Webstart
+ programs. Using Hotspot JIT.
+ The packages are built using the IcedTea build support and patches
+ from the IcedTea project.
+Homepage: http://openjdk.java.net/
 
 Package: libkms1
 Status: deinstall ok config-files
@@ -11390,6 +11718,26 @@ Description: library for full-featured text search engine (runtime)
  This package contains the files necessary for running applications that
  use the libclucene library.
 Homepage: http://clucene.sourceforge.net
+
+Package: libnss3
+Status: install ok installed
+Priority: optional
+Section: libs
+Installed-Size: 3271
+Maintainer: Maintainers of Mozilla-related packages <pkg-mozilla-maintainers@lists.alioth.debian.org>
+Architecture: i386
+Multi-Arch: same
+Source: nss
+Version: 2:3.14.3-1
+Depends: libc6 (>= 2.7), libnspr4 (>= 2:4.9-2~) | libnspr4-0d (>= 4.8.6), libsqlite3-0 (>= 3.5.9), zlib1g (>= 1:1.1.4)
+Pre-Depends: multiarch-support
+Conflicts: libnss3-1d (<< 2:3.13.4-2)
+Description: Network Security Service libraries
+ This is a set of libraries designed to support cross-platform development
+ of security-enabled client and server applications. It can support SSLv2
+ and  v4, TLS, PKCS #5, #7, #11, #12, S/MIME, X.509 v3 certificates and
+ other security standards.
+Homepage: http://www.mozilla.org/projects/security/pki/nss/
 
 Package: sysvinit-utils
 Essential: yes
@@ -12215,6 +12563,28 @@ Description: X11 Session Management library
  This module can be found at
  git://anongit.freedesktop.org/git/xorg/lib/libSM
 
+Package: icedtea-7-plugin
+Status: install ok installed
+Priority: extra
+Section: web
+Installed-Size: 259
+Maintainer: OpenJDK Team <openjdk@lists.launchpad.net>
+Architecture: i386
+Multi-Arch: same
+Source: icedtea-web
+Version: 1.4-3~deb7u1
+Depends: openjdk-7-jre, icedtea-netx (= 1.4-3~deb7u1), libc6 (>= 2.4), libgcc1 (>= 1:4.1.1), libglib2.0-0 (>= 2.31.8), libstdc++6 (>= 4.6)
+Conflicts: icedtea-gcjwebplugin (<< 1.0-1ubuntu4), icedtea-plugin (<< 1.2~pre1-1~), icedtea6-plugin (<< 6b21.2~pre1-1~)
+Description: web browser plugin based on OpenJDK and IcedTea to execute Java applets
+ IcedTeaPlugin is a web browser plugin to execute Java applets, supporting
+ LiveConnect/JavaScript. It is targeted for xulrunner-1.9 and compatible
+ browsers that support the NPAPI.
+Homepage: http://icedtea.classpath.org/wiki/IcedTea-Web
+Npp-Applications: ec8030f7-c20a-464f-9b0e-13a3a9e97384, 92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a, aa5ca914-c309-495d-91cf-3141bbb04115
+Npp-Description: IcedTea Java Web Browser Plugin for OpenJDK 7 (execution of applets on web pages)
+Npp-Mimetype: application/x-java-vm, application/x-java-applet, application/x-java-applet;version=1.1, application/x-java-applet;version=1.1.1, application/x-java-applet;version=1.1.2, application/x-java-applet;version=1.1.3, application/x-java-applet;version=1.2, application/x-java-applet;version=1.2.1, application/x-java-applet;version=1.2.2, application/x-java-applet;version=1.3, application/x-java-applet;version=1.3.1, application/x-java-applet;version=1.4, application/x-java-applet;version=1.4.1, application/x-java-applet;version=1.4.2, application/x-java-applet;version=1.5, application/x-java-applet;version=1.6, application/x-java-applet;version=1.7, application/x-java-applet;jpi-version=1.7.0_00, application/x-java-bean, application/x-java-bean;version=1.1, application/x-java-bean;version=1.1.1, application/x-java-bean;version=1.1.2, application/x-java-bean;version=1.1.3, application/x-java-bean;version=1.2, application/x-java-bean;version=1.2.1, application/x-java-bean;version=1.2.2, application/x-java-bean;version=1.3, application/x-java-bean;version=1.3.1, application/x-java-bean;version=1.4, application/x-java-bean;version=1.4.1, application/x-java-bean;version=1.4.2, application/x-java-bean;version=1.5, application/x-java-bean;version=1.6, application/x-java-bean;version=1.7, application/x-java-bean;jpi-version=1.7.0_00
+Npp-Name: The IcedTea Web Browser Plugin
+
 Package: linux-image-3.2.0-3artax1-686-pae
 Status: deinstall ok config-files
 Priority: optional
@@ -12351,6 +12721,28 @@ Description: PNG library - runtime
  This package contains the runtime library files needed to run software
  using libpng.
 Homepage: http://libpng.org/pub/png/libpng.html
+
+Package: icedtea-netx-common
+Status: install ok installed
+Priority: extra
+Section: java
+Installed-Size: 1022
+Maintainer: OpenJDK Team <openjdk@lists.launchpad.net>
+Architecture: all
+Multi-Arch: foreign
+Source: icedtea-web
+Version: 1.4-3~deb7u1
+Replaces: icedtea-netx (<< 1.2~), icedtea-plugin (<< 1.1.2-1~), openjdk-6-jre (<< 6b18-1.8.7-3), openjdk-6-jre-headless (<< 6b18-1.8.7-3)
+Conflicts: openjdk-6-jre (<< 6b18-1.8.7-3), openjdk-6-jre-headless (<< 6b18-1.8.7-3)
+Conffiles:
+ /etc/icedtea-web/javaws.policy 01f40304afd5978f8cae1f891190ec17
+Description: NetX - implementation of the Java Network Launching Protocol (JNLP)
+ NetX provides a drop-in replacement for javaws (Java Web Start). Since
+ upstream NetX is dormant, IcedTea is hosting and modifying the sources
+ in the IcedTea-Web directory.
+ .
+ This package contains the architecture independent files.
+Homepage: http://icedtea.classpath.org/wiki/IcedTea-Web
 
 Package: nvidia-alternative
 Status: install ok installed
@@ -12568,6 +12960,22 @@ Description: pixel-manipulation library for X and cairo
  rectangles, image compositing using the Porter/Duff model
  and implicit mask generation for geometric primitives including
  trapezoids, triangles, and rectangles.
+
+Package: default-jre
+Status: install ok installed
+Priority: optional
+Section: java
+Installed-Size: 21
+Maintainer: Debian Java Mailing List <debian-java@lists.debian.org>
+Architecture: i386
+Source: java-common (0.47)
+Version: 1:1.6-47
+Provides: java-runtime, java2-runtime, java5-runtime, java6-runtime
+Depends: default-jre-headless (= 1:1.6-47), openjdk-6-jre (>= 6b23~pre8-2~)
+Description: Standard Java or Java compatible Runtime
+ This package points to the Java runtime, or Java compatible
+ runtime recommended for the i386 architecture,
+ which is openjdk-6-jre for i386.
 
 Package: libyajl2
 Status: install ok installed
@@ -13389,6 +13797,30 @@ Description: GCC OpenMP (GOMP) support library
  GOMP is an implementation of OpenMP for the C, C++, and Fortran compilers
  in the GNU Compiler Collection.
 Homepage: http://gcc.gnu.org/
+
+Package: icedtea-6-plugin
+Status: install ok installed
+Priority: extra
+Section: web
+Installed-Size: 259
+Maintainer: OpenJDK Team <openjdk@lists.launchpad.net>
+Architecture: i386
+Multi-Arch: same
+Source: icedtea-web
+Version: 1.4-3~deb7u1
+Replaces: icedtea-gcjwebplugin, icedtea-plugin (<< 1.2~pre1-1~), openjdk-6-jre (<< 6b18-1.8.7-3)
+Provides: icedtea6-plugin
+Depends: openjdk-6-jre, icedtea-netx (= 1.4-3~deb7u1), libc6 (>= 2.4), libgcc1 (>= 1:4.1.1), libglib2.0-0 (>= 2.31.8), libstdc++6 (>= 4.6)
+Conflicts: icedtea-gcjwebplugin (<< 1.0-1ubuntu4), icedtea-plugin (<< 1.2~pre1-1~), icedtea6-plugin (<< 6b21.2~pre1-1~)
+Description: web browser plugin based on OpenJDK and IcedTea to execute Java applets
+ IcedTeaPlugin is a web browser plugin to execute Java applets, supporting
+ LiveConnect/JavaScript. It is targeted for xulrunner-1.9 and compatible
+ browsers that support the NPAPI.
+Homepage: http://icedtea.classpath.org/wiki/IcedTea-Web
+Npp-Applications: ec8030f7-c20a-464f-9b0e-13a3a9e97384, 92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a, aa5ca914-c309-495d-91cf-3141bbb04115
+Npp-Description: IcedTea Java Web Browser Plugin for OpenJDK 6 (execution of applets on web pages)
+Npp-Mimetype: application/x-java-vm, application/x-java-applet, application/x-java-applet;version=1.1, application/x-java-applet;version=1.1.1, application/x-java-applet;version=1.1.2, application/x-java-applet;version=1.1.3, application/x-java-applet;version=1.2, application/x-java-applet;version=1.2.1, application/x-java-applet;version=1.2.2, application/x-java-applet;version=1.3, application/x-java-applet;version=1.3.1, application/x-java-applet;version=1.4, application/x-java-applet;version=1.4.1, application/x-java-applet;version=1.4.2, application/x-java-applet;version=1.5, application/x-java-applet;version=1.6, application/x-java-applet;jpi-version=1.6.0_00, application/x-java-bean, application/x-java-bean;version=1.1, application/x-java-bean;version=1.1.1, application/x-java-bean;version=1.1.2, application/x-java-bean;version=1.1.3, application/x-java-bean;version=1.2, application/x-java-bean;version=1.2.1, application/x-java-bean;version=1.2.2, application/x-java-bean;version=1.3, application/x-java-bean;version=1.3.1, application/x-java-bean;version=1.4, application/x-java-bean;version=1.4.1, application/x-java-bean;version=1.4.2, application/x-java-bean;version=1.5, application/x-java-bean;version=1.6, application/x-java-bean;jpi-version=1.6.0_00
+Npp-Name: The IcedTea Web Browser Plugin
 
 Package: xserver-xorg-video-tseng
 Status: install ok installed
